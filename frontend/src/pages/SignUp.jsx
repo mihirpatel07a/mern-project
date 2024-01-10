@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import OAuth from "../components/OAuth";
 
 export default function SignUp() {
   const [formData, setFormData] = useState({});
@@ -174,7 +175,9 @@ export default function SignUp() {
               </div>
             </form>
             <div className="mt-3 space-y-3">
-              <button
+
+              <OAuth />
+              {/* <button
                 type="button"
                 className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
               >
@@ -189,7 +192,7 @@ export default function SignUp() {
                   </svg>
                 </span>
                 Sign up with Google
-              </button>
+              </button> */}
               {error && <p className="text-red-500 mt-5">{error}</p>}
             </div>
           </div>
