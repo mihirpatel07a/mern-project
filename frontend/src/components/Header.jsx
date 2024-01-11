@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { useSelector } from "react-redux";
 // Fa stands for Font awesome. It takes icons from font awesome website.
 import { FaSearch } from "react-icons/fa";
 
 export default function Header() {
+  const { currentUser } = useSelector((state) => state.user);
   return (
     <header className="bg-slate-200 shadow-md">
       {/* Name & Search bar are next to each other using flex
@@ -31,31 +32,45 @@ export default function Header() {
 
         {/* navbar options */}
         <ul className="flex gap-4 p-2">
-          <Link to='/'>
+          <Link to="/">
             <li className="hidden sm:inline text-slate-700 hover:no-underline cursor-pointer">
               Home
             </li>
           </Link>
-          <Link to='/about'>
+          <Link to="/about">
             <li className="hidden sm:inline text-slate-700 hover:no-underline cursor-pointer">
               About
             </li>
           </Link>
-          <Link to='/contact-us'>
+          <Link to="/contact-us">
             <li className="hidden sm:inline text-slate-700 hover:no-underline cursor-pointer">
               Contact Us
             </li>
           </Link>
-          <Link to='/privacy'>
+          <Link to="/privacy">
             <li className="hidden sm:inline text-slate-700 hover:no-underline cursor-pointer">
               Privacy
             </li>
           </Link>
-          <Link to='/sign-up'>
-            <li className="text-slate-700 hover:no-underline cursor-pointer">
-              Sign Up
-            </li>
-          </Link>
+
+
+          <Link to="/profile">
+          {currentUser ? (
+           
+              <img
+                className="rounded-full  h-7 w-7 object-cover"
+                src={currentUser.avatar}
+                alt="'profile"
+              ></img>
+          
+          ) : (
+            
+              <li className="text-slate-700 hover:no-underline cursor-pointer">
+                Sign In
+              </li>
+          
+          )}
+           </Link>
         </ul>
       </div>
     </header>

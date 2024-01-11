@@ -7,6 +7,7 @@ import Profile from './pages/Profile';
 import Header from './components/Header';
 import Privacy from './pages/Privacy';
 import ContactUs from './pages/ContactUs';
+import Privateprofile from './components/Privateprofile';
 
 export default function App() {
   return (
@@ -20,7 +21,12 @@ export default function App() {
           <Route path='/about' element={<About />} />
           <Route path='/privacy' element={<Privacy />} />
           <Route path='/contact-us' element={<ContactUs />} />
-          <Route path='/profile' element={<Profile />} />
+          <Route  element={< Privateprofile />} >
+             <Route path='/profile' element= { < Profile /> } />
+          </Route>
+          
+           
+            
         </Routes>
       </BrowserRouter>
     </>
