@@ -21,12 +21,10 @@ export default function App() {
           <Route path='/about' element={<About />} />
           <Route path='/privacy' element={<Privacy />} />
           <Route path='/contact-us' element={<ContactUs />} />
-          <Route  element={< Privateprofile />} >
-             <Route path='/profile' element= { < Profile /> } />
+
+          <Route element={<Privateprofile />}>
+            <Route path='/profile' element={<Profile />} />
           </Route>
-          
-           
-            
         </Routes>
       </BrowserRouter>
     </>

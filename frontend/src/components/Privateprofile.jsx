@@ -1,20 +1,9 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { Outlet, Navigate } from 'react-router-dom'
 
-import { Navigate, Outlet } from "react-router-dom";
+export default function Privateprofile() {
+    const { currentUser } = useSelector((state) => state.user)
 
-
-export default function Privateprofile(){
- const {currentuser} = useSelector((state) => state.user)
-
-
-return (
-    <>
-    {currentuser ?    <Outlet /> : <Navigate to="sign-in"/>
-    
-    } 
-    </>
-         
-)
-
+  return currentUser ? <Outlet /> : <Navigate to="/sign-in" />
 }
