@@ -6,6 +6,6 @@ import { createListing } from "../controllers/listing.controller.js";
 
 const router = express.Router();
 
-router.post('/create' ,   createListing);
+router.post('/create' , verifyToken,  createListing);
 
 export default router;
