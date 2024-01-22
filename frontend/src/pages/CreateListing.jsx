@@ -29,7 +29,8 @@ export default function CreateListing() {
   const [imageUploadError, setImageUploadError] = useState(false);
   const [error, setError] = useState(false);
   const { currentUser } = useSelector((state) => state.user);
-  const [uploading , setUploading] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [userlisting, setUserListing] = useState(null);
   const navigate = useNavigate();
 
   console.log(formData);
