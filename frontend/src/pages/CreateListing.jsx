@@ -156,7 +156,7 @@ export default function CreateListing() {
       if (data.success === false) {
         setError(data.message);
       }
-      navigate(`/listing/${data._id}`);
+      navigate(`/listings/${data._id}`);
     } catch (err) {
       setError(err.message);
     }
