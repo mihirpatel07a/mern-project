@@ -11,6 +11,7 @@ import Privateprofile from './components/Privateprofile';
 import CreateListing from './pages/CreateListing';
 import UpdateListing from './pages/updateListing';
 import Listing from './pages/listing';
+import Admin from './pages/Admin';
 
 export default function App() {
   return (
@@ -31,6 +32,8 @@ export default function App() {
             <Route path='/update-listing/:listingId' element={<UpdateListing />} />
             <Route path="/listings/:listingId" element={<Listing />} />
           </Route>
+
+          <Route path="/Admin/home" element={<Admin/>} />
         </Routes>
       </BrowserRouter>
     </>
