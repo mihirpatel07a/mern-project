@@ -2,6 +2,7 @@ import Listing from "../models/listing.model.js";
 import User from "../models/user.model.js";
 import { errorHandler } from "../utils/error.js";
 import bcryptjs from "bcryptjs";
+import Report from "../models/report.model.js";
 
 export const test = (req, res) => {
   res.send("API Route Is Work");
@@ -80,3 +81,25 @@ export const getUser = async (req, res, next) => {
       next(error);
   }
 }
+
+export const reportUser = async (req, res , next) => {
+   try{
+          
+       const message = req.body.message;
+       const userRef = req.body.userRef;
+       const listingid = req.body.listingid;
+       const userid = req.body.userid;
+
+       const newReport = new Report({message , userRef , listingid , userId : userid });
+
+      await newReport.save();
+
+      res.status(200).send({message: "successfully reported", success: true})
+   }
+
+   catch(error)
+   {
+    next(error);
+   }
+}
+

@@ -11,15 +11,32 @@ import Privateprofile from './components/Privateprofile';
 import CreateListing from './pages/CreateListing';
 import UpdateListing from './pages/updateListing';
 import Listing from './pages/listing';
-import Admin from './pages/Admin';
+import Admin from './pages/Admin1/Admin';
+import Users from './pages/Admin1/users';
+import Listings from './pages/Admin1/Listings';
+
+import { useSelector } from 'react-redux';
+import AReport from './pages/Admin1/AReport';
+import Userdetails from './pages/Admin1/userdetails';
 
 export default function App() {
+  const {currentUser} = useSelector(state => state.user);
   return (
     <>
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path='/' element={<Home/>} />
+
+          { currentUser && currentUser.email === "admin777@gmail.com" ? (
+            <Route path="/" element={<Admin/>} />
+          )
+              :
+(
+  <Route path='/' element={<Home/>} />
+)
+
+          }
+         
           <Route path='/sign-in' element={<SignIn />} />
           <Route path='/sign-up' element={<SignUp />} />
           <Route path='/about' element={<About />} />
@@ -33,7 +50,11 @@ export default function App() {
             <Route path="/listings/:listingId" element={<Listing />} />
           </Route>
 
-          <Route path="/Admin/home" element={<Admin/>} />
+       
+          <Route path="/Users" element={<Users/> }></Route>
+          <Route path="/Listings" element={<Listings/> }></Route>
+          <Route path="/Report" element= {<AReport />}> </Route>
+          <Route path="/userd" element= {<Userdetails />}> </Route>
         </Routes>
       </BrowserRouter>
     </>

@@ -183,7 +183,8 @@ export default function Profile() {
 
       <div className="p-3 max-w-lg mx-auto">
         <h1 className="text-3xl font-semibold text-center my-7">Profile</h1>
-
+  
+      
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           {/* For getting the file reference of an image */}
           <input

@@ -6,6 +6,7 @@ import { Navigation } from "swiper/modules";
 import { useSelector } from "react-redux";
 import Map from "../components/Map";
 import "swiper/css/bundle";
+import Report from "../components/Report";
 
 import {
   FaBath,
@@ -28,6 +29,7 @@ export default function Listing() {
   const [error, setError] = useState(false);
   const [copied, setCopied] = useState(false);
   const [contact, setContact] = useState(false);
+  const [report  , setReport] = useState(false);
   const { currentUser } = useSelector((state) => state.user);
 
   useEffect(() => {
@@ -169,6 +171,8 @@ export default function Listing() {
                 </li>
               </ul>
               {currentUser && listing.userRef !== currentUser._id && !contact && (
+              
+             
                   <button 
                     type="button" 
                     className="bg-slate-700 text-white rounded-lg p-2 mt-4 hover:opacity-95"
@@ -176,10 +180,31 @@ export default function Listing() {
                   >
                     Contact Landlord
                   </button>
+
+                  
+                  
+                
+
                   
                 )}
                 
               {contact && <Contact listing={listing} />}
+
+
+{currentUser && !report && listing.userRef!= currentUser._id && (
+  <button 
+  type="button" 
+  className="bg-slate-700 text-white rounded-lg p-2 mt-4 hover:opacity-95"
+  onClick={() => setReport(true)}
+>
+  Report Listing
+</button>
+
+)}
+
+{report && <Report listing={listing} />}
+            
+
             </div>
 
             <div className="flex flex-col flex-1 gap-6">
