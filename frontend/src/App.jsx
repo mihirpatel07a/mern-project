@@ -18,6 +18,7 @@ import Listings from './pages/Admin1/Listings';
 import { useSelector } from 'react-redux';
 import AReport from './pages/Admin1/AReport';
 import Userdetails from './pages/Admin1/userdetails';
+import Search from './pages/Search';
 
 export default function App() {
   const {currentUser} = useSelector(state => state.user);
@@ -42,7 +43,7 @@ export default function App() {
           <Route path='/about' element={<About />} />
           <Route path='/privacy' element={<Privacy />} />
           <Route path='/contact-us' element={<ContactUs />} />
-
+          <Route path='/search' element={<Search />} />
           <Route element={<Privateprofile />}>
             <Route path='/profile' element={<Profile />} />
             <Route path='/create-listing' element={<CreateListing />} />
