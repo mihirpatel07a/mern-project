@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import Listingitem from '../components/listingItem';
 
 
 export default function Search() {
@@ -14,10 +15,10 @@ export default function Search() {
     order: 'desc',
 });
 
-const [listing , setListing] = useState({})
+const [listings , setListings] = useState([])
 const [loading , setLoading] = useState(false)
 
-console.log(listing);
+// console.log(listing);
 
 
 useEffect(()=> {
@@ -53,7 +54,7 @@ useEffect(()=> {
 
       const data = await res.json();
 
-      setListing(data);
+      setListings(data);
       setLoading(false);
   }
 
@@ -204,8 +205,15 @@ const navigate = useNavigate();
       </div>
       <div className=''>
                 <h1 className='text-2xl font-semibold border-b p-3 text-slate-700 mt-1'>Listing Results: </h1>
+  <div className='p-7 flex flex-wrap gap-4'>
+  {!loading && listings.length === 0 && <p className='text-xl text-slate-700 p-3'>No listing Found</p>}
+  {loading && (
+    <p className='text-xl text-center text-slate-700 w-full'>Loading....</p>
+  )}
 
-          </div>
+  {!loading && listings && listings.map((listing) => <Listingitem key={listing._id} listing={listing} ></Listingitem> )}
+  </div>
+         </div>
     </div>
   )
 }
