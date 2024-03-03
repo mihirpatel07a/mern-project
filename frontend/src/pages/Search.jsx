@@ -220,6 +220,7 @@ export default function Search() {
 
             <div className="flex gap-2">
               <input
+              
                 type="checkbox"
                 id="furnished"
                 className="w-5"
